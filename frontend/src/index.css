@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/fonts/Helvetica.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+ height: 100%;
+ width: 100%;
+}
+
+* {
+ box-sizing: border-box;
+ font-family: Helvetica;
+}
+
+

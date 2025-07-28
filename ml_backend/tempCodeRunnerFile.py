@@ -1,0 +1,1 @@
+user = supabase.auth.sign_up({ "email": input("users_email"), "password": input("users_password") })

@@ -1,0 +1,99 @@
+{
+    "patient": {
+        "name": "Rahul Mehta",
+        "age": 32,
+        "gender": "Male",
+        "patient_id": "RX2025-1 147"
+    },
+    "tests": [
+        {
+            "name": "Hemoglobin",
+            "result": 14.8,
+            "unit": "g/dL (Predicted)",
+            "normal_range": [13.5, 17.5],
+            "status": "Normal"
+        },
+        {
+            "name": "WBC Count",
+            "result": 4500,
+            "unit": "cells/μL (Predicted)",
+            "normal_range": [3500, 11000]
+        },
+        {
+            "name": "Platelet Count",
+            "result": 150000,
+            "unit": "cells/μL (Predicted)",
+            "normal_range": [100000, 450000]
+        },
+        {
+            "name": "R&C Count",
+            "result": 4.7,
+            "unit": "milliL (Predicted)",
+            "normal_range": [3.5, 6.1]
+        },
+        {
+            "name": "Blood Urea",
+            "result": 22,
+            "unit": "mg/dL (Predicted)",
+            "normal_range": [10, 40],
+            "status": "Normal"
+        },
+        {
+            "name": "Serum Creatinine",
+            "result": 1.0,
+            "unit": "mg/dL (Predicted)",
+            "normal_range": [0.7, 1.3],
+            "status": "Normal"
+        },
+        {
+            "name": "Fasting Glucose",
+            "result": 95,
+            "unit": "mg/dL (Predicted)",
+            "normal_range": [70, 100],
+            "status": "High"
+        },
+        {
+            "name": "Postprandial Glucose",
+            "result": 130,
+            "unit": "mg/dL (Predicted)",
+            "normal_range": [100, 140],
+            "status": "High"
+        },
+        {
+            "name": "Total Cholesterol",
+            "result": 180,
+            "unit": "mg/dL (Predicted)",
+            "normal_range": "<200",
+            "status": "High"
+        },
+        {
+            "name": "HDL Cholesterol",
+            "result": 50,
+            "unit": "mg/dL (Predicted)",
+            "normal_range": ">40",
+            "status": "Low"
+        },
+        {
+            "name": "LDL Cholesterol",
+            "result": 110,
+            "unit": "mg/dL (Predicted)",
+            "normal_range": "<130",
+            "status": "High"
+        },
+        {
+            "name": "Triglycerides",
+            "result": 140,
+            "unit": "mg/dL (Predicted)",
+            "normal_range": "<150",
+            "status": "Normal"
+        }
+    ],
+    "remarks": [
+        "Lipid profile within acceptable limits. Suggest lifestyle continuation.",
+        "No abnormal findings in radiological scans."
+    ],
+    "doctor": {
+        "name": "Dr. Neha Kapoor"
+    },
+    "notes": [],
+    "plain_language_summary": "Rahul Mehta's test results show that his cholesterol levels are high, but his blood sugar levels are also high after eating. His liver and kidney functions are normal. He should continue with a healthy lifestyle to manage these conditions. This summary is for informational purposes only and is not a substitute for professional medical advice."}
