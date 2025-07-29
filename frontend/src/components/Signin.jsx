@@ -21,23 +21,6 @@ const Signin = () => {
         setConfirmPasswordData(e.target.value);
     }
 
-    const handleSignup = async () => {
-        const res = await fetch("http://127.0.0.1:8000/signup", {
-            method: "POST",
-            headers: {
-            "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-            email: email_data,
-            password: password_data
-            }),
-            credentials: "include",
-        });
-
-        const data = await res.json();
-        console.log(data);
-    }
-
     const submitHandler = (e) => {
         e.preventDefault();
         console.log("email_data", email_data);
@@ -48,8 +31,6 @@ const Signin = () => {
             alert("Passwords do not match.");
             return;
         }
-
-        handleSignup();
 
         setConfirmPasswordData('');
         setPasswordData('');

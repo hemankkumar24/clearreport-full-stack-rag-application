@@ -6,7 +6,6 @@ import About from './components/About'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Signin from './components/Signin'
 import Login from './components/Login'
-import Dashboard from './components/Dashboard'
 
 const App = () => {
   return (
@@ -45,16 +44,6 @@ const App = () => {
               <>
                 <div className='h-screen w-screen'>
                   <Login />
-                </div>
-              </>
-            }
-          />
-          <Route
-            path="/dashboard"
-            element={
-              <>
-                <div className='h-screen w-screen'>
-                  <Dashboard />
                 </div>
               </>
             }
