@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-
+import { Link, useNavigate  } from 'react-router-dom'
 const Login = () => {
-
+    const navigate = useNavigate();
     const [email_data, setEmailData] = useState("");
     const changeEmail = (e) => {
         e.preventDefault();
@@ -16,6 +15,7 @@ const Login = () => {
     }
 
     const handleLogin = async () => {
+    try{
         const res = await fetch("http://127.0.0.1:8000/login", {
             method: "POST",
             headers: {
@@ -28,8 +28,20 @@ const Login = () => {
             credentials: "include"
         });
 
-        const data = await res.json();
-        console.log(data);
+        if (res.ok) {
+            console.log("Login successful!");
+
+            navigate('/dashboard');
+        }
+        else {
+            const errorData = await res.json();
+            console.error("Login failed:", errorData.detail);
+            }
+        }
+       
+        catch (error) {
+            console.error("A network error occurred:", error);
+        }
     }
 
     const submitHandler = (e) => {
@@ -42,6 +54,7 @@ const Login = () => {
         setPasswordData('');
         setEmailData('');
     }
+    
 
 
     return (

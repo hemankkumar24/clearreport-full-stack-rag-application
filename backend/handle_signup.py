@@ -23,6 +23,13 @@ def handle_signup(data, response):
                 httponly=True, 
                 samesite='lax' 
             )
+            
+            user_id = auth_response.user.id
+            
+            data = supabase.table("profiles").insert({
+                            "id":user_id
+            }).execute()
+            print(data)
             return {"message": "Signup successful and session cookie set."}
         else:
             raise HTTPException(status_code=400, detail="Signup failed. User may already exist or invalid credentials.")
