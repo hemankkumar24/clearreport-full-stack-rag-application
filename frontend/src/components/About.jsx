@@ -8,9 +8,6 @@ const About = () => {
         <div className='text-4xl'>
           About Us
         </div>
-        <div>
-
-        </div>
       </div>
     </div>
   )

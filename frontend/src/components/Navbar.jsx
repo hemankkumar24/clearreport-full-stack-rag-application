@@ -9,6 +9,7 @@ const Navbar = () => {
     '/': 'text-white',
     '/login': 'text-black',
     '/signup': 'text-black',
+    '/dashboard': 'text-black',
   }
 
   const text_color = routeTextColors[location.pathname] || 'text-white'

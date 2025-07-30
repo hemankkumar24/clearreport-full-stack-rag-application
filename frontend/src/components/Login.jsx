@@ -1,9 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
+import { supabase } from '../supabase_client';
+import useSession from '../hooks/useSession';
 
 const Login = () => {
     const navigate = useNavigate();
+    const { session, isLoading } = useSession();
+
+    useEffect(() => {
+        if (!isLoading && session) {
+            navigate('/dashboard');
+        }
+        }, [isLoading, session, navigate]);
+
+
     const [email_data, setEmailData] = useState("");
     const changeEmail = (e) => {
         e.preventDefault();
@@ -16,10 +26,25 @@ const Login = () => {
         setPasswordData(e.target.value);
     }
 
+    const handleSubmit = async (data) => {
+        const { error: loginERROR } = await supabase.auth.signInWithPassword({
+            email: data.email, password: data.password
+        })
+        if (loginERROR) {
+            console.log("Error logging in:", loginERROR.message);
+        }
+        else {
+            console.log("Successful Login");
+            navigate('/dashboard');
+        }
+    }
+
     const submitHandler = (e) => {
         e.preventDefault();
         console.log("email_data", email_data);
         console.log("password_data", password_data);
+
+        handleSubmit({ "email": email_data, "password": password_data })
 
         setPasswordData('');
         setEmailData('');
@@ -60,7 +85,7 @@ const Login = () => {
                                 <button className='w-full bg-emerald-400 rounded text-white text-xl py-3 mt-3 cursor-pointer hover:bg-emerald-500'>Login</button>
                             </div>
                         </form>
-                        <div className='mt-10'>Create an account? <Link to='/signup' className='text-blue-600'>Sign In</Link></div>
+                        <div className='mt-10'>Create an account? <Link to='/signup' className='text-blue-600'>Sign Up</Link></div>
                     </div>
                 </div>
             </div>

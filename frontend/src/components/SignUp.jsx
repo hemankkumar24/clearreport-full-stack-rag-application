@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { supabase } from '../supabase_client';
 
 const Signin = () => {
 
@@ -21,11 +22,22 @@ const Signin = () => {
         setConfirmPasswordData(e.target.value);
     }
 
+    const handleSubmit = async (data) => {
+        const { error: signUpERROR } = await supabase.auth.signUp({email: data.email
+                                                                  ,password: data.password})
+        if (signUpERROR)
+        {
+            console.log("Error signing up:", signUpERROR.message);
+        }
+    }
+
     const submitHandler = (e) => {
         e.preventDefault();
         console.log("email_data", email_data);
         console.log("password_data", password_data);
         console.log("confirmpassword_data", confirmpassword_data);
+
+        handleSubmit({"email": email_data, "password":password_data})
 
         if (password_data !== confirmpassword_data) {
             alert("Passwords do not match.");
