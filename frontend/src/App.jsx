@@ -8,7 +8,7 @@ import Signin from './components/SignUp'
 import Login from './components/Login'
 import { supabase } from './supabase_client'
 import Protected from './components/Protected'
-import Dashboard from './components/Dashboard'
+import Landing from './components/Landing'
 
 const App = () => {
 
@@ -21,7 +21,7 @@ const App = () => {
                <div className='h-full w-full bg-zinc-100'> <Stats /> </div> </> } />
           <Route path="/signup" element={ <> <div className='h-screen w-screen'> <Signin /> </div> </> } />
           <Route path="/login" element={ <> <div className='h-screen w-screen'> <Login /> </div> </> } />
-          <Route path="/dashboard" element={ <> <Protected> <div className='h-screen w-screen'> <Dashboard /> </div> </Protected> </>}/>
+          <Route path="/landing" element={ <> <Protected> <div className='h-screen w-screen'> <Landing /> </div> </Protected> </>}/>
         </Routes>
       </Router>
     </>

@@ -9,15 +9,19 @@ const Navbar = () => {
     '/': 'text-white',
     '/login': 'text-black',
     '/signup': 'text-black',
-    '/dashboard': 'text-black',
+    '/landing': 'text-black',
+  }
+
+  const routedisplay = {
+    '/landing': 'hidden',
   }
 
   const text_color = routeTextColors[location.pathname] || 'text-white'
-
+  const displayType = routedisplay[location.pathname] || 'block'
   return (
-        <div className='flex justify-between items-center py-4 px-10 
+        <div className={`flex justify-between items-center py-4 px-10 
      bg-white/10 backdrop-blur-lg border-b border-white/20 
-     fixed top-0 w-full z-50'>
+     fixed top-0 w-full z-50 ${displayType}`}>
             <h1 className={`text-3xl ${text_color} cursor-pointer`}>
               <Link to='/'>ClearReport</Link></h1>
             <div className='flex justify-evenly gap-20 text-xl items-center'>
