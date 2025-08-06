@@ -19,9 +19,14 @@ const Landing = () => {
         const verify_get_data = async () => {
             if (!isLoading && session) {
                 const { data, error } = await supabase.from('profiles').select('full_name').eq('id', userId).single()
-                // console.log(data.full_name)
+                
                 if (data.full_name == null) {
                     setPopup(true);
+                }
+
+                if (error)
+                {
+                    console.log("AAAAAAAAAAAAAAAAAA", error.message)
                 }
             }
         };
@@ -149,7 +154,7 @@ const Landing = () => {
 
     return (
         <>
-            {popup && <div className='absolute w-full h-screen flex justify-center items-center bg-black/80 z-50'>
+            {popup && <div className='absolute w-full h-screen flex justify-center items-center bg-black/80 z-50 overflow-x-hidden'>
                 <div className='w-[500px] h-[500px] bg-zinc-100 p-7 pt-5 rounded '>
                     <div className="text-2xl">Welcome! Let's Complete Your Profile</div>
                     <div className=" text-gray-600">Just a few more details to get you started.</div>
@@ -193,22 +198,9 @@ const Landing = () => {
                 </div>
             </div>}
 
-            <div className={`flex justify-between items-center py-4 px-10 
-        bg-black/3 backdrop-blur-lg border-b border-white/20 
-        fixed top-0 w-full z-50`}>
-                <h1 className={`text-3xl text-emerald-400 font-bold cursor-pointer`}>
-                    <Link to='/'>ClearReport</Link></h1>
-                <div className='flex justify-evenly gap-20 text-xl items-center'>
-                    <p className={`text-black`}>About Us</p>
-                    <div className='text-white px-3 bg-blue-500 py-2
-                    rounded-2xl cursor-pointer hover:bg-blue-600'
-                        onClick={(e) => {
-                            handleLogout(e);
-                        }}>Logout</div>
-                </div>
-            </div>
+            
 
-            <div className='mt-24 px-70'>
+            <div className='mt-35 px-70 overflow-x-hidden w-full'>
                 <div className='text-4xl'>Welcome back, {profileData?.full_name || 'there'}! 👋</div>
                 <div className="text-lg text-gray-600">
                     We're excited to help you take charge of your health journey.
@@ -240,6 +232,6 @@ const Landing = () => {
         </>
     )
 
-}
+} 
 
 export default Landing

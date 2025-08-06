@@ -7,14 +7,40 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'RegularR';
+  src: url('/fonts/RegularR.OTF');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'heroText';
+  src: url('/fonts/heroText.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#heroText {
+  font-family: heroText;
+}
+
 html, body {
  height: 100%;
  width: 100%;
 }
 
 * {
- box-sizing: border-box;
- font-family: Helvetica;
+  box-sizing: border-box;
 }
+
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+#regularR {
+  font-family: RegularR;
+}
+
 
 

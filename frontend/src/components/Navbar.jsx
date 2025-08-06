@@ -1,37 +1,38 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
+import { supabase } from '../supabase_client';
 
 const Navbar = () => {
   const location = useLocation()
+  const navigate = useNavigate();
+  const isLanding = location.pathname === '/landing'
 
-  const routeTextColors = {
-    '/': 'text-white',
-    '/login': 'text-black',
-    '/signup': 'text-black',
-    '/landing': 'text-black',
-  }
+  const handleLogout = async () => {
+  const { error } = await supabase.auth.signOut();
+  if (error) {
+      console.error('Logout error:', error.message);
+    } else {
+      navigate('/login'); 
+    }
+  };
 
-  const routedisplay = {
-    '/landing': 'hidden',
-  }
-
-  const text_color = routeTextColors[location.pathname] || 'text-white'
-  const displayType = routedisplay[location.pathname] || 'block'
   return (
-        <div className={`flex justify-between items-center py-4 px-10 
-     bg-white/10 backdrop-blur-lg border-b border-white/20 
-     fixed top-0 w-full z-50 ${displayType}`}>
-            <h1 className={`text-3xl ${text_color} cursor-pointer`}>
-              <Link to='/'>ClearReport</Link></h1>
-            <div className='flex justify-evenly gap-20 text-xl items-center'>
-                <p className={`${text_color}`}>About Us</p>
-                <Link to="/login" className='text-white px-3 bg-blue-500 py-2
-                rounded-2xl cursor-pointer hover:bg-blue-600' onClick={() => {
-
-                }}>Login</Link>
-            </div>
+    <>
+      <div className="fixed w-full top-0 py-7 px-24 flex justify-between items-center backdrop-blur-xs bg-white/10 border-b border-black/10 z-50"
+        id="quorva" >
+        <div className="flex items-center">
+          <i className="ri-heart-pulse-line text-black text-2xl "></i>
+          <h1 className={`text-2xl text-black curs  or-pointer relative `}
+          ><Link to='/'>ClearReport</Link></h1>
         </div>
+        <div className='text-2xl gap-10 flex'>
+          <div className='text-zinc-500 cursor-pointer'><span className='underline text-black'>En</span> Hi</div>
+
+          {isLanding ? (<div className="cursor-pointer" onClick={handleLogout}>Logout</div>) : (<div className="cursor-pointer"><Link to='/login'>Login</Link></div>) }
+        </div>
+      </div>
+    </>
   )
 }
 

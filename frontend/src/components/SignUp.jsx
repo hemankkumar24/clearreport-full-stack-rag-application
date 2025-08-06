@@ -23,12 +23,26 @@ const Signin = () => {
     }
 
     const handleSubmit = async (data) => {
-        const { error: signUpERROR } = await supabase.auth.signUp({email: data.email
-                                                                  ,password: data.password})
+        const { data: userData, error: signUpERROR } = await supabase.auth.signUp({email: data.email,password: data.password})
+
+        console.log(userData);
         if (signUpERROR)
         {
             console.log("Error signing up:", signUpERROR.message);
         }
+        const user_id = userData.user.id; 
+        const { error: createProfileERROR } = await supabase.from("profiles").insert([{ id: user_id }]);
+
+        if (createProfileERROR)
+        {
+            console.log("Error creating profile:", createProfileERROR.message);
+        }
+        else
+        {
+            console.log("Created Profile Successfully!");
+        }
+
+
     }
 
     const submitHandler = (e) => {

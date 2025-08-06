@@ -60,8 +60,8 @@ const Login = () => {
                         className='object-cover w-full h-full' />
                 </div>
                 <div className='w-full p-7 flex flex-col justify-center'>
-                    <h1 className='text-4xl'>Welcome Back!</h1>
-                    <h1 className='text pt-1 w-full'>Sign in to continue to your dashboard.</h1>
+                    <h1 className='text-4xl font-semibold tracking-tight leading-16'>Welcome Back!</h1>
+                    <h1 className='text-xl tracking-tight leading-1  w-full'>Sign in to continue to your dashboard.</h1>
                     <div className='flex flex-col w-full flex-start justify-center items-center'>
                         <form className='pt-10 w-full' onSubmit={(e) => {
                             submitHandler(e);
@@ -75,7 +75,7 @@ const Login = () => {
                                     }} />
                             </div>
                             <div><div className='pt-4'>Password</div>
-                                <input type="text" className='w-full border-2 border-zinc-500 px-3 py-3 rounded'
+                                <input type="password" className='w-full border-2 border-zinc-500 px-3 py-3 rounded'
                                     value={password_data}
                                     onChange={(e) => {
                                         changePassword(e);

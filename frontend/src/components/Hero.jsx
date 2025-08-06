@@ -1,23 +1,22 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
   return (
-    <div className='py-25 h-screen w-full 
-    bg-[url("/images/hero_bg.jpg")] bg-cover bg-bottom 
-    px-70 filter'>
-        <div className='flex justify-between items-center h-full w-full'>
-            <div className='border-b-4 border-r-4 border-white rounded-full p-10 h-[600px] w-[600px]'>
-            <img src="/images/hero_image.png" alt="" 
-            className='h-[500px] w-[600px] object-cover
-            rounded-2xl border-b-4 border-r-4 border-white'/>
-            </div>
-            <div className='w-[48.2%] flex flex-col gap-y-3 justify-center'>
-                <div className='text-[#f0f2fa] text-6xl  text-right '>Understand Your Medical Reports with AI</div>
-                <div className='text-2xl text-left text-[#f0f2fa] font-light'>
-                    Our intelligent tool extracts key results from your lab reports and explains them in plain English (or Hindi) with charts, trends, and no jargon.
-                </div>
-            </div>
-        </div>         
+    <div className='h-[100vh] w-full bg-amber-50 overflow-hidden' id="regularR">
+      <div className="absolute inset-0 bg-[url('./images/grid.png')] opacity-10 pointer-events-none"></div>
+      <div className='pt-20 flex justify-center items-center w-full'>
+        <div className='text-7xl font-semibold text-center mt-25 tracking-tight leading-16 z-20'>Redefining <i id="heroText" className='font-extralight'>health insights</i> <br/> through  <i id="heroText" className='font-extralight'>AI and automation</i>
+        <p className='mt-3 text-center text-lg leading-6 text-gray-600 max-w-3xl mx-auto tracking-normal'>
+          Our platform transforms complex medical reports into clear, human-friendly explanations. 
+          From lab test interpretations to trend visualizations and AI-powered health Q&A, 
+          we make personalized healthcare understandable, accessible, and actionable for everyone.
+        </p>
+        <div className='text-xl tracking-normal mt-3 bg-black text-white w-[30%] text-center mx-auto p-2 px-3 rounded-2xl hover:text-black hover:bg-white hover:shadow-xl cursor-pointer gap-5'><Link to='/signup'>Get Started for Free <i class="ri-arrow-right-line"></i></Link></div>
+        </div>
+      </div>
+      <img src="./images/rbc.png" alt="" className='-rotate-45 -scale-95 relative bottom-105 z-10 select-none' draggable={false} onDragStart={(e) => e.preventDefault()}/>
+      <img src="./images/rbc.png" alt="" className='-rotate-45 scale-105 relative bottom-600 blur-xs opacity-10 grayscale select-none' draggable={false} onDragStart={(e) => e.preventDefault()}/>
     </div>
   )
 }

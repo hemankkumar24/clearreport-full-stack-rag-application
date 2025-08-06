@@ -17,8 +17,7 @@ const App = () => {
       <Router>
         <div className='fixed w-full z-40'> <Navbar /> </div>
         <Routes>
-          <Route path="/" element={ <> <div className='h-full w-full'> <Hero /> </div>
-               <div className='h-full w-full bg-zinc-100'> <Stats /> </div> </> } />
+          <Route path="/" element={ <> <div className='h-full w-full '> <Hero /> </div> </> } />
           <Route path="/signup" element={ <> <div className='h-screen w-screen'> <Signin /> </div> </> } />
           <Route path="/login" element={ <> <div className='h-screen w-screen'> <Login /> </div> </> } />
           <Route path="/landing" element={ <> <Protected> <div className='h-screen w-screen'> <Landing /> </div> </Protected> </>}/>
