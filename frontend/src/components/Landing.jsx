@@ -7,6 +7,7 @@ import Dashboard from './Dashboard';
 import Upload from './Upload';
 import Trends from './Trends';
 import AskAI from './AskAI';
+import Reports from './Reports';
 
 
 const Landing = () => {
@@ -19,13 +20,12 @@ const Landing = () => {
         const verify_get_data = async () => {
             if (!isLoading && session) {
                 const { data, error } = await supabase.from('profiles').select('full_name').eq('id', userId).single()
-                
+
                 if (data.full_name == null) {
                     setPopup(true);
                 }
 
-                if (error)
-                {
+                if (error) {
                     console.log("AAAAAAAAAAAAAAAAAA", error.message)
                 }
             }
@@ -107,6 +107,8 @@ const Landing = () => {
         setTrendsHold('');
         setAskAI(false);
         setAskAIHold('');
+        setReports(false);
+        setreportsHold('');
     }
 
     const [upload, setUpload] = useState(false)
@@ -121,6 +123,8 @@ const Landing = () => {
         setTrendsHold('');
         setAskAI(false);
         setAskAIHold('');
+        setReports(false);
+        setreportsHold('');
     }
 
     const [trends, setTrends] = useState(false)
@@ -135,6 +139,8 @@ const Landing = () => {
         setUploadHold('');
         setAskAI(false);
         setAskAIHold('');
+        setReports(false);
+        setreportsHold('');
     }
 
     const [askAI, setAskAI] = useState(false)
@@ -143,6 +149,24 @@ const Landing = () => {
         e.preventDefault();
         setAskAI(true);
         setAskAIHold('bg-white');
+        setTrends(false);
+        setTrendsHold('');
+        setDashboard(false);
+        setDashboardHold('');
+        setUpload(false);
+        setUploadHold('');
+        setReports(false);
+        setreportsHold('');
+    }
+
+    const [reports, setReports] = useState(false)
+    const [reportsHold, setreportsHold] = useState('')
+    const setReportsDisplay = (e) => {
+        e.preventDefault();
+        setReports(true);
+        setreportsHold('bg-white');
+        setAskAI(false);
+        setAskAIHold('');
         setTrends(false);
         setTrendsHold('');
         setDashboard(false);
@@ -198,7 +222,7 @@ const Landing = () => {
                 </div>
             </div>}
 
-            
+
 
             <div className='mt-35 px-70 overflow-x-hidden w-full'>
                 <div className='text-4xl'>Welcome back, {profileData?.full_name || 'there'}! 👋</div>
@@ -219,6 +243,9 @@ const Landing = () => {
                     <div className={`text-zinc-800 cursor-pointer w-full text-center py-1 rounded ${askAIHold}`} onClick={(e) => {
                         setAskAIDisplay(e);
                     }}>Ask AI</div>
+                    <div className={`text-zinc-800 cursor-pointer w-full text-center py-1 rounded ${reportsHold}`} onClick={(e) => {
+                        setReportsDisplay(e);
+                    }}>Reports</div>
                 </div>
 
                 {dashboard && <Dashboard />}
@@ -226,12 +253,16 @@ const Landing = () => {
                 {upload && <Upload />}
 
                 {trends && <Trends />}
-
-                {askAI && <AskAI />}
+                <div className='h-full w-full'>
+                    {askAI && <AskAI />}
+                </div>
+                <div className='h-full w-full'>
+                {reports && <Reports />}
+                </div>
             </div>
         </>
     )
 
-} 
+}
 
 export default Landing
