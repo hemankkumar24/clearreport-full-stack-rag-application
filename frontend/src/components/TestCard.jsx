@@ -3,7 +3,7 @@ import React from 'react'
 const TestCard = ({ test }) => {
   return (
     <div className="shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300 border border-gray-200 my-3 p-5 rounded grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <h2 className="text-xl mb-2">{test.test_name}</h2>
+      <h2 className="text-lg mb-2">{test.test_name}</h2>
       <div className='flex justify-between w-full'>
         <div>
           <p><span className='text-[#2563eb]'>Result:</span> {test.test_value} {test.unit}</p>

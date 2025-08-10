@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="fixed w-full top-0 py-7 px-24 flex justify-between items-center backdrop-blur-xs bg-white/10 border-b border-black/10 z-50"
+      <div className="fixed w-full top-0 py-7 px-5 lg:px-24 flex justify-between items-center backdrop-blur-xs bg-white/10 border-b border-black/10 z-50"
         id="quorva" >
         <div className="flex items-center">
           <i className="ri-heart-pulse-line text-black text-2xl "></i>
@@ -27,7 +27,7 @@ const Navbar = () => {
           ><Link to='/'>ClearReport</Link></h1>
         </div>
         <div className='text-2xl gap-10 flex'>
-          <div className='text-zinc-500 cursor-pointer'><span className='underline text-black'>En</span> Hi</div>
+          <div className='text-zinc-500 cursor-pointer hidden lg:block'><span className='underline text-black'>En</span> Hi</div>
 
           {isLanding ? (<div className="cursor-pointer" onClick={handleLogout}>Logout</div>) : (<div className="cursor-pointer"><Link to='/login'>Login</Link></div>) }
         </div>

@@ -65,8 +65,8 @@ const Signin = () => {
 
     return (
         <div className='flex justify-center items-center h-full w-full'>
-            <div className='flex h-[60%] w-[45%] shadow-xl object-cover'>
-                <div className='w-1/1 hidden md:block'>
+            <div className='flex xl:h-[70%] xl:w-[55%] shadow-xl object-cover'>
+                <div className='w-1/1 hidden lg:block'>
                 <img src="/public/images/signin.jpg" alt="" 
                 className='object-cover w-full h-full'/>
                 </div>

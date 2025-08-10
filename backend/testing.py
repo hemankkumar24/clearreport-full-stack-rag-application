@@ -23,6 +23,7 @@ def return_status(text_accepted):
     print(variable['patient'])
 
     for test in variable['tests']:
+        print(f"test: {test}")
         low = test['normal_range'][0]
         high = test['normal_range'][1]
         result = test['result']

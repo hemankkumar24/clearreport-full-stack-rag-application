@@ -7,8 +7,10 @@ load_dotenv()
 
 PINECONE_KEY = os.getenv("PINECONE_API_KEY")
 index_name = "healthcare-reports"
+
 pc = Pinecone(api_key=PINECONE_KEY)
-index = pc.Index(index_name)
+
+index = pc.Index(index_name) 
 
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
@@ -34,9 +36,9 @@ def data_feed(data_recieved, user_id, report_name, access_token):
     
     print(text_to_embed)
     metadata = {    
-                "user_id": user_id,
-                "original_text": text_to_embed
-            }
+        "user_id": user_id,
+        "original_text": text_to_embed
+    }
     
     index.upsert(vectors=[{
         "id": (report_name + user_id),

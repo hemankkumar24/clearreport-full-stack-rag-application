@@ -35,9 +35,9 @@ const Dashboard = () => {
   return (
     <>
       <div className='w-full'>
-        <div className='text-4xl mt-10'>Latest Test Results</div>
-        {latestTests.length === 0 ? (<div className='p-10 bg-gray-200 rounded flex justify-center items-center h-[500px] mt-5'>
-          <div className='text-zinc-500'>No Test Results Yet.</div>
+        <div className='text-2xl lg:text-4xl mt-10'>Latest Test Results</div>
+        {latestTests.length === 0 ? (<div className='p-10 bg-gray-50 shadow-inner rounded flex justify-center items-center h-[500px] mt-5'>
+          <div className=''>No Test Results Yet.</div>
         </div>) : (
           <div>
 

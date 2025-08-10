@@ -224,13 +224,13 @@ const Landing = () => {
 
 
 
-            <div className='mt-35 px-70 overflow-x-hidden w-full'>
-                <div className='text-4xl'>Welcome back, {profileData?.full_name || 'there'}! 👋</div>
-                <div className="text-lg text-gray-600">
+            <div className='mt-35 px-5 lgpx-20 xl:px-70 overflow-x-hidden w-full'>
+                <div className='text-2xl lg:text-4xl'>Welcome back, {profileData?.full_name || 'there'}! 👋</div>
+                <div className="lg:text-lg text-gray-600">
                     We're excited to help you take charge of your health journey.
                 </div>
 
-                <div className="mt-5 bg-gray-200 shadow rounded-lg p-1 flex w-full justify-around drop-shadow-md">
+                <div className="mt-5 bg-gray-200 shadow rounded-lg p-1 flex flex-col sm:flex-row w-full justify-around drop-shadow-md">
                     <div className={`text-zinc-800 cursor-pointer w-full text-center py-1 rounded ${dashboardHold}`} onClick={(e) => {
                         setDashboardDisplay(e);
                     }}>Dashboard</div>
@@ -252,7 +252,7 @@ const Landing = () => {
 
                 {upload && <Upload />}
 
-                {trends && <Trends />}
+                {/* {trends && <Trends />} */}
                 <div className='h-full w-full'>
                     {askAI && <AskAI />}
                 </div>

@@ -54,14 +54,14 @@ const Login = () => {
 
     return (
         <div className='flex justify-center items-center h-full w-full'>
-            <div className='flex h-[60%] w-[45%] shadow-xl object-cover'>
-                <div className='w-1/1 hidden md:block'>
+            <div className='flex xl:h-[70%] xl:w-[55%] shadow-xl object-cover'>
+                <div className='w-1/1 hidden lg:block'>
                     <img src="/public/images/signin.jpg" alt=""
                         className='object-cover w-full h-full' />
                 </div>
                 <div className='w-full p-7 flex flex-col justify-center'>
-                    <h1 className='text-4xl font-semibold tracking-tight leading-16'>Welcome Back!</h1>
-                    <h1 className='text-xl tracking-tight leading-1  w-full'>Sign in to continue to your dashboard.</h1>
+                    <h1 className='text-4xl tracking-tight leading-16'>Welcome Back!</h1>
+                    <h1 className='text-xl tracking-tight leading-5  w-full'>Sign in to continue to your dashboard.</h1>
                     <div className='flex flex-col w-full flex-start justify-center items-center'>
                         <form className='pt-10 w-full' onSubmit={(e) => {
                             submitHandler(e);

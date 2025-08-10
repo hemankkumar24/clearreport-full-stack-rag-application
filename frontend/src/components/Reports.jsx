@@ -60,7 +60,32 @@ const Reports = () => {
         setClicked(false);
     }
 
-    const handleDelete()
+    const handleDelete = async (e, report_name, report_id) => {
+        e.preventDefault();
+        const { data: reportData, error: reportError } = await supabase
+            .from('reports')
+            .delete()
+            .eq('report_name', report_name)
+
+            if (reportError)
+            {
+                console.log(reportError);
+            }
+
+            const { data: testData, error: testError } = await supabase
+            .from('test_results')
+            .delete()
+            .eq('report_name', report_name)
+
+            if (testError)
+            {
+                console.log(testError);
+            }
+            
+            const res = await fetch(`http://localhost:8000/deletepinecone?user_id=${report_id}&file_name=${report_name}`, {method: "POST"});
+
+        }
+
 
     return (
         <>
@@ -83,15 +108,19 @@ const Reports = () => {
             </div>
             )}
 
-            <div className='text-4xl mt-10 my-5'>Reports</div>
+            <div className='text-2xl lg:text-4xl mt-10 my-5'>Reports</div>
             <div className='bg-gray-50 p-6 rounded-xl shadow-inner'>
-                {reports.map((report, index) => (
-                    <div key={report.id} className='border my-4 rounded shadow-md transition-all hover:shadow-lg hover:scale-[1.02] border-gray-200' onClick={(e) => {
-                        handleClick(e, report.report_name);
-                    }}>
-                        <div className="mb-4 p-4 rounded cursor-pointer flex justify-between items-center">
+                {reports.length == 0 ? (
+                    <div className='h-[60vh] flex flex-col justify-center items-center'><span className='text-xl'>No Reports Uploaded Yet</span>
+                    <div>You can get your report details here once uploaded.</div></div>
+                ) :
+                (reports.map((report, index) => (
+                    <div key={report.id} className='border my-4 rounded shadow-md transition-all hover:shadow-lg hover:scale-[1.02] border-gray-200'>
+                        <div className="mb-4 p-4 rounded flex justify-between items-center">
                             <div>
-                            <h3 className="font-semibold">{report.report_name}</h3>
+                            <h3 className="font-semibold cursor-pointer" onClick={(e) => {
+                        handleClick(e, report.report_name);
+                    }}>{report.report_name}</h3>
                             <p className="text-sm text-gray-500">
                                 Uploaded: {new Date(report.upload_time).toLocaleString()}
                             </p>
@@ -99,14 +128,14 @@ const Reports = () => {
                                 Language: {(report.text_language)}
                             </p>
                             </div>
-                            <div className='text-xl text-red-500' onClick={(e) => {
-
+                            <div className='text-xl text-red-500 cursor-pointer' onClick={(e) => {
+                                handleDelete(e, report.report_name, report.user_id);
                             }}>
                                 <i class="ri-delete-bin-6-line"></i>
                             </div>
                         </div>
                     </div>
-                ))}
+                )))}
             </div>
         </>
     )
