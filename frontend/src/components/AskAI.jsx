@@ -81,7 +81,7 @@ const AskAI = () => {
     e.preventDefault();
     if (!isAllowed) { return; }
     setIsAllowed(false);
-    setTextBar("transition-transform duration-500 ease-in-out translate-y-25 lg:translate-y-50");
+    setTextBar("transition-transform duration-500 ease-in-out translate-y-25 lg:translate-y-70");
     setHeaderText("transition-all duration-200 ease-in-out -translate-y-5 opacity-0");
     console.log(text);
     setText('');
@@ -142,7 +142,7 @@ const AskAI = () => {
           </div>
 
 
-          <div className={`relative bottom-[30.00rem] left w-full text-center mx-auto text-black ${headerText} text-2xl lg:text-3xl`}>Ask me anything! {profileData?.full_name || 'there'}</div>
+          <div className={`relative bottom-[40.00vh] left w-full text-center mx-auto text-black ${headerText} text-2xl lg:text-3xl`}>Ask me anything! {profileData?.full_name || 'there'}</div>
           <input
             type="text"
             value={text}

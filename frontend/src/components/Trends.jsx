@@ -11,6 +11,8 @@ const Trends = () => {
   const [glucoseValues, setGlucoseValues] = useState([]);
   const [hemoLabels, setHemoLabels] = useState([]);
   const [hemoValues, setHemoValues] = useState([]);
+  const [plateletLabels, setPlateletLabels] = useState([]);
+  const [plateletValues, setPlateletValues] = useState([]);
 
   useEffect(() => {
     const get_graphs = async () => {
@@ -19,6 +21,9 @@ const Trends = () => {
         if (glucoseError) { console.log(glucoseError) }
 
         const { data: hemoglobin, error: hemoglobinError } = await supabase.from("test_results").select("*").ilike('test_name', '%hemoglobin%').eq('report_id', userId).order("id", { ascending: true });
+        if (hemoglobinError) { console.log(hemoglobinError) }
+
+        const { data: platelet, error: plateletError } = await supabase.from("test_results").select("*").ilike('test_name', '%platelet count%').eq('report_id', userId).order("id", { ascending: true });
         if (hemoglobinError) { console.log(hemoglobinError) }
 
         console.log(hemoglobin);
@@ -54,6 +59,17 @@ const Trends = () => {
         setHemoLabels(arr);
         setHemoValues(arr_values);
 
+        var arr = [];
+        var arr_values = [];
+        platelet.forEach((entry) => {
+          const report_name = entry.report_name;
+          if (!(arr.includes(report_name))) {
+            arr.push(report_name);
+            arr_values.push(entry.test_value);
+          }
+        })
+        setPlateletLabels(arr);
+        setPlateletValues(arr_values);
       }
     };
     get_graphs();
@@ -76,8 +92,16 @@ const Trends = () => {
           <LineGraph
             labels={hemoLabels}
             values={hemoValues}
-            labelName="Glucose"
+            labelName="Hemoglobin"
             lineColor="#f87171"
+          />
+        </div>
+        <div className='my-15'>
+          <LineGraph
+            labels={plateletLabels}
+            values={plateletValues}
+            labelName="Platelet Count"
+            lineColor="#60a5fa"
           />
         </div>
       </div>

@@ -252,7 +252,7 @@ const Landing = () => {
 
                 {upload && <Upload />}
 
-                {/* {trends && <Trends />} */}
+                {trends && <Trends />}
                 <div className='h-full w-full'>
                     {askAI && <AskAI />}
                 </div>

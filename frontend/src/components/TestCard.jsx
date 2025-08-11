@@ -13,7 +13,7 @@ const TestCard = ({ test }) => {
         <div>
           {test.test_status === 'normal' ?
             (<i className="text-green-600 text-2xl ri-checkbox-circle-fill"></i>) :
-            (test.test_status === 'unsure' ?
+            (test.test_status === 'unsure' || test.test_status === 'None' ?
               (<i className="text-yellow-600 text-2xl ri-question-fill"></i>) :
               (<i className="text-red-600 text-2xl ri-error-warning-fill"></i>)
             )

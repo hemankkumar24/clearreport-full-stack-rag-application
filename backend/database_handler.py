@@ -3,6 +3,7 @@ from supabase import create_client, Client
 from dotenv import load_dotenv  
 from pinecone import Pinecone
 from sentence_transformers import SentenceTransformer
+import re
 load_dotenv()
 
 PINECONE_KEY = os.getenv("PINECONE_API_KEY")
@@ -25,8 +26,12 @@ def data_feed(data_recieved, user_id, report_name, access_token):
     data = supabase.table("reports").insert({"user_id": user_id, "report_name": report_name, "extracted_text": data_recieved, "parsed_successfully": True}).execute()
     
     for test in data_recieved["tests"]:
-        data = supabase.table("test_results").insert({"report_id": user_id, "test_name": str(test['name']), "test_value": int(test['result']), "unit": str(test['unit']).split(" ")[0],
-        "reference_range": str(test['normal_range']), "test_status": str(test['status']), "report_name": report_name}).execute() 
+        result_str = str(test['result']).strip()
+        match = re.search(r"[\d.]+", result_str)
+        test_value = float(match.group()) if match else 0
+        
+        data = supabase.table("test_results").insert({"report_id": user_id, "test_name": str(test['name']), "test_value": test_value, "unit": str(test['unit']).split(" ")[0],
+        "reference_range": str(test['normal_range']), "test_status": str(test['status']), "report_name": report_name}).execute()  
     
     text_to_embed = f"Report Name: {report_name}. " + \
                 " ".join([f"{t['name']} {t['result']} {t['unit']} (Normal: {t['normal_range']})" 
