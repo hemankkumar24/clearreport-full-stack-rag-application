@@ -82,7 +82,7 @@ const Reports = () => {
                 console.log(testError);
             }
             
-            const res = await fetch(`http://localhost:8000/deletepinecone?user_id=${report_id}&file_name=${report_name}`, {method: "POST"});
+            const res = await fetch(`https://healthcare-report.chickenkiller.com/deletepinecone?user_id=${report_id}&file_name=${report_name}`, {method: "POST"});
 
         }
 

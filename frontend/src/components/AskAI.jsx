@@ -102,7 +102,7 @@ const AskAI = () => {
     };
 
 
-    const response = await fetch('http://localhost:8000/ask_ai', {
+    const response = await fetch('https://healthcare-report.chickenkiller.com/ask_ai', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

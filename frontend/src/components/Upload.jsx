@@ -25,7 +25,7 @@ const Upload = () => {
             formData.append("access_token", access_token)
 
 
-            axios.post('http://127.0.0.1:8000/handlepdf', formData, {
+            axios.post('https://healthcare-report.chickenkiller.com/handlepdf', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

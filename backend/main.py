@@ -21,7 +21,7 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  
+    allow_origins=["https://clearreport-full-stack-rag-applicat.vercel.app"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
