@@ -10,14 +10,12 @@ from tesseract import return_text
 from typing import Annotated
 from delete_pinecone import delete_pinecone
 from askai import call_ai
+import tesseract
 import json 
 
 load_dotenv()
 app = FastAPI()
 
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")  
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY) 
 
 app.add_middleware(
     CORSMiddleware,
@@ -26,6 +24,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")  
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY) 
+
 
 class AIRequest(BaseModel):
     user_id: str

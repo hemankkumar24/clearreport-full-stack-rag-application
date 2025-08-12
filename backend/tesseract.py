@@ -2,6 +2,7 @@ import fitz
 import os
 import shutil
 import pytesseract
+pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
 from PIL import Image, ImageEnhance, ImageFilter
 from call_llm import get_llm_response
 from database_handler import data_feed
