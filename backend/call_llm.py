@@ -13,7 +13,8 @@ model = SentenceTransformer('all-MiniLM-L6-v2')        # sentence transformer mo
 llm = ChatGoogleGenerativeAI(
     model="gemini-1.5-flash",   
     temperature=0,
-    google_api_key=os.getenv("GEMINI_API_KEY")
+    google_api_key=os.getenv("GEMINI_API_KEY"),
+    response_mime_type="application/json"
 )
 
 def get_llm_response(text_extracted):
