@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from pinecone import Pinecone
 from sentence_transformers import SentenceTransformer
 from langchain_core.prompts import ChatPromptTemplate  
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_community.chat_models import ChatOllama
 load_dotenv()
 
 PINECONE_KEY = os.getenv("PINECONE_API_KEY")
@@ -21,10 +21,9 @@ SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")  
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-llm = ChatGoogleGenerativeAI(
-    model="gemini-1.5-flash",   
-    temperature=0,
-    google_api_key=os.getenv("GEMINI_API_KEY")
+llm = ChatOllama(
+    model="llama3.2",  # Name of the model in your Ollama setup
+    temperature=0
 )
 
 def call_ai(user_id, latest_data, question):
