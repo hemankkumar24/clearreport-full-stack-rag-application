@@ -3,17 +3,19 @@ import shutil                                          # to delete file
 from dotenv import load_dotenv                         # load .env
 from sentence_transformers import SentenceTransformer  # for vector embeddings
 from langchain_core.prompts import ChatPromptTemplate  # prompt template
-from langchain_community.chat_models import ChatOllama # ollama model 
+from langchain_google_genai import ChatGoogleGenerativeAI # gemini model 
 from testing import return_status
 import json                                             
 # ---------------------------------------------------- #
 
 model = SentenceTransformer('all-MiniLM-L6-v2')        # sentence transformer model
 
-llm = ChatOllama(
-    model="llama3.2", 
-    temperature=0  
+llm = ChatGoogleGenerativeAI(
+    model="gemini-1.5-flash",   
+    temperature=0,
+    google_api_key=os.getenv("GEMINI_API_KEY")
 )
+
 def get_llm_response(text_extracted):
     messages = [
         ("system", """

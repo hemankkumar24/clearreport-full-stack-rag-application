@@ -22,7 +22,7 @@ SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 llm = ChatGoogleGenerativeAI(
-    model="gemini-1.5-flash",   # or "gemini-1.5-pro" for higher quality
+    model="gemini-1.5-flash",   
     temperature=0,
     google_api_key=os.getenv("GEMINI_API_KEY")
 )
