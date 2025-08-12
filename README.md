@@ -2,6 +2,30 @@
 
 ClearReport is a full-stack Retrieval-Augmented Generation (RAG) application designed to process health reports, extract structured data, and provide AI-powered insights in natural language.
 
+## 📸 Screenshots
+
+### 1️⃣ Home Page
+![Home Page](screenshots/home.png)
+
+### 2️⃣ Sign Up
+![Sign Up](screenshots/signup.png)
+
+### 3️⃣ Latest Reports
+![Latest Report](screenshots/latestreports.png)
+
+### 4️⃣ Upload Report
+![Upload Reports](screenshots/uploadreport.png)
+
+### 5️⃣ Trends
+![Trends](screenshots/trends.png)
+
+### 6️⃣ Chat with AI
+![Ask AI](screenshots/askai.png)
+
+### 7️⃣ Reports Tab
+![Ask AI](screenshots/reports.png)
+
+
 ## 📂 Project Structure
 ```
 hemankkumar24-clearreport-full-stack-rag-application/
@@ -58,17 +82,12 @@ PINECONE_API_KEY=your_pinecone_api_key
    ```bash
    cd backend
    ```
-2. Create and activate a Python virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # Linux/Mac
-   venv\Scripts\activate      # Windows
-   ```
-3. Install dependencies:
+
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-4. Start the backend server:
+3. Start the backend server:
    ```bash
    uvicorn main:app --reload
    ```

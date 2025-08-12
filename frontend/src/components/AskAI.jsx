@@ -133,7 +133,7 @@ const AskAI = () => {
                 className={`flex w-full ${msg.align === 'left' ? 'justify-start' : 'justify-end'
                   }`}
               >
-                <div className={`px-4 py-2 max-w-[70%] w-[50%]${msg.align === 'left' ? 'ml-20 text-xl text-black' : 'mr-20  text-white bg-zinc-600 rounded-l-full rounded-b-full text-right text-xl'
+                <div className={`px-4 py-2 max-w-[70%] w-[50%]${msg.align === 'left' ? 'ml-20 text-xl text-black' : 'mr-20  text-white bg-zinc-600 rounded-l-xl rounded-b-xl text-right text-xl'
                   }`}>
                   {msg.content}
                 </div>
