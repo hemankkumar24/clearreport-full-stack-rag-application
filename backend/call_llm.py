@@ -7,7 +7,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI # gemini model
 from testing import return_status
 import json                                             
 # ---------------------------------------------------- #
-
+load_dotenv()
 model = SentenceTransformer('all-MiniLM-L6-v2')        # sentence transformer model
 
 llm = ChatGoogleGenerativeAI(
